@@ -1,0 +1,3487 @@
+openapi: 3.0.3
+info:
+  title: WYGIWYH API
+  version: 1.0.0
+  description: A no-frills expense tracker
+paths:
+  /api/account-groups/:
+    get:
+      operationId: account_groups_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - account-groups
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAccountGroupList'
+          description: ''
+    post:
+      operationId: account_groups_create
+      tags:
+      - account-groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AccountGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AccountGroup'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountGroup'
+          description: ''
+  /api/account-groups/{id}/:
+    get:
+      operationId: account_groups_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account Group.
+        required: true
+      tags:
+      - account-groups
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountGroup'
+          description: ''
+    put:
+      operationId: account_groups_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account Group.
+        required: true
+      tags:
+      - account-groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AccountGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AccountGroup'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountGroup'
+          description: ''
+    patch:
+      operationId: account_groups_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account Group.
+        required: true
+      tags:
+      - account-groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAccountGroup'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAccountGroup'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAccountGroup'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountGroup'
+          description: ''
+    delete:
+      operationId: account_groups_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account Group.
+        required: true
+      tags:
+      - account-groups
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/accounts/:
+    get:
+      operationId: accounts_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - accounts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAccountList'
+          description: ''
+    post:
+      operationId: accounts_create
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Account'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+  /api/accounts/{id}/:
+    get:
+      operationId: accounts_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account.
+        required: true
+      tags:
+      - accounts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+    put:
+      operationId: accounts_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account.
+        required: true
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Account'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+    patch:
+      operationId: accounts_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account.
+        required: true
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAccount'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAccount'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAccount'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+    delete:
+      operationId: accounts_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Account.
+        required: true
+      tags:
+      - accounts
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/categories/:
+    get:
+      operationId: categories_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - categories
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionCategoryList'
+          description: ''
+    post:
+      operationId: categories_create
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TransactionCategory'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionCategory'
+          description: ''
+  /api/categories/{id}/:
+    get:
+      operationId: categories_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Category.
+        required: true
+      tags:
+      - categories
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionCategory'
+          description: ''
+    put:
+      operationId: categories_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Category.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TransactionCategory'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionCategory'
+          description: ''
+    patch:
+      operationId: categories_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Category.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionCategory'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionCategory'
+          description: ''
+    delete:
+      operationId: categories_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Category.
+        required: true
+      tags:
+      - categories
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/currencies/:
+    get:
+      operationId: currencies_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - currencies
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCurrencyList'
+          description: ''
+    post:
+      operationId: currencies_create
+      tags:
+      - currencies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Currency'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Currency'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Currency'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+          description: ''
+  /api/currencies/{id}/:
+    get:
+      operationId: currencies_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Currency.
+        required: true
+      tags:
+      - currencies
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+          description: ''
+    put:
+      operationId: currencies_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Currency.
+        required: true
+      tags:
+      - currencies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Currency'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Currency'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Currency'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+          description: ''
+    patch:
+      operationId: currencies_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Currency.
+        required: true
+      tags:
+      - currencies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCurrency'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCurrency'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCurrency'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
+          description: ''
+    delete:
+      operationId: currencies_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Currency.
+        required: true
+      tags:
+      - currencies
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/dca/entries/:
+    get:
+      operationId: dca_entries_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDCAEntryList'
+          description: ''
+    post:
+      operationId: dca_entries_create
+      tags:
+      - dca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DCAEntry'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DCAEntry'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DCAEntry'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAEntry'
+          description: ''
+  /api/dca/entries/{id}/:
+    get:
+      operationId: dca_entries_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Entry.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAEntry'
+          description: ''
+    put:
+      operationId: dca_entries_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Entry.
+        required: true
+      tags:
+      - dca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DCAEntry'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DCAEntry'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DCAEntry'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAEntry'
+          description: ''
+    patch:
+      operationId: dca_entries_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Entry.
+        required: true
+      tags:
+      - dca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDCAEntry'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDCAEntry'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDCAEntry'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAEntry'
+          description: ''
+    delete:
+      operationId: dca_entries_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Entry.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/dca/strategies/:
+    get:
+      operationId: dca_strategies_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDCAStrategyList'
+          description: ''
+    post:
+      operationId: dca_strategies_create
+      tags:
+      - dca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DCAStrategy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DCAStrategy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DCAStrategy'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+  /api/dca/strategies/{id}/:
+    get:
+      operationId: dca_strategies_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+    put:
+      operationId: dca_strategies_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DCAStrategy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DCAStrategy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DCAStrategy'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+    patch:
+      operationId: dca_strategies_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDCAStrategy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDCAStrategy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDCAStrategy'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+    delete:
+      operationId: dca_strategies_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/dca/strategies/{id}/current_price/:
+    get:
+      operationId: dca_strategies_current_price_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+  /api/dca/strategies/{id}/investment_frequency/:
+    get:
+      operationId: dca_strategies_investment_frequency_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+  /api/dca/strategies/{id}/price_comparison/:
+    get:
+      operationId: dca_strategies_price_comparison_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this DCA Strategy.
+        required: true
+      tags:
+      - dca
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DCAStrategy'
+          description: ''
+  /api/entities/:
+    get:
+      operationId: entities_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - entities
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionEntityList'
+          description: ''
+    post:
+      operationId: entities_create
+      tags:
+      - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionEntity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionEntity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TransactionEntity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionEntity'
+          description: ''
+  /api/entities/{id}/:
+    get:
+      operationId: entities_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Entity.
+        required: true
+      tags:
+      - entities
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionEntity'
+          description: ''
+    put:
+      operationId: entities_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Entity.
+        required: true
+      tags:
+      - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionEntity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionEntity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TransactionEntity'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionEntity'
+          description: ''
+    patch:
+      operationId: entities_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Entity.
+        required: true
+      tags:
+      - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionEntity'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionEntity'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionEntity'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionEntity'
+          description: ''
+    delete:
+      operationId: entities_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Entity.
+        required: true
+      tags:
+      - entities
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/exchange-rates/:
+    get:
+      operationId: exchange_rates_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      tags:
+      - exchange-rates
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedExchangeRateList'
+          description: ''
+    post:
+      operationId: exchange_rates_create
+      tags:
+      - exchange-rates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeRate'
+          description: ''
+  /api/exchange-rates/{id}/:
+    get:
+      operationId: exchange_rates_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Exchange Rate.
+        required: true
+      tags:
+      - exchange-rates
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeRate'
+          description: ''
+    put:
+      operationId: exchange_rates_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Exchange Rate.
+        required: true
+      tags:
+      - exchange-rates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ExchangeRate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeRate'
+          description: ''
+    patch:
+      operationId: exchange_rates_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Exchange Rate.
+        required: true
+      tags:
+      - exchange-rates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedExchangeRate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedExchangeRate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedExchangeRate'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExchangeRate'
+          description: ''
+    delete:
+      operationId: exchange_rates_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Exchange Rate.
+        required: true
+      tags:
+      - exchange-rates
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/installment-plans/:
+    get:
+      operationId: installment_plans_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - installment-plans
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedInstallmentPlanList'
+          description: ''
+    post:
+      operationId: installment_plans_create
+      tags:
+      - installment-plans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlan'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlan'
+          description: ''
+  /api/installment-plans/{id}/:
+    get:
+      operationId: installment_plans_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Installment Plan.
+        required: true
+      tags:
+      - installment-plans
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlan'
+          description: ''
+    put:
+      operationId: installment_plans_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Installment Plan.
+        required: true
+      tags:
+      - installment-plans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlan'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlan'
+          description: ''
+    patch:
+      operationId: installment_plans_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Installment Plan.
+        required: true
+      tags:
+      - installment-plans
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallmentPlan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallmentPlan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInstallmentPlan'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlan'
+          description: ''
+    delete:
+      operationId: installment_plans_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Installment Plan.
+        required: true
+      tags:
+      - installment-plans
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/recurring-transactions/:
+    get:
+      operationId: recurring_transactions_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - recurring-transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRecurringTransactionList'
+          description: ''
+    post:
+      operationId: recurring_transactions_create
+      tags:
+      - recurring-transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecurringTransaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecurringTransaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecurringTransaction'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringTransaction'
+          description: ''
+  /api/recurring-transactions/{id}/:
+    get:
+      operationId: recurring_transactions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Recurring Transaction.
+        required: true
+      tags:
+      - recurring-transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringTransaction'
+          description: ''
+    put:
+      operationId: recurring_transactions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Recurring Transaction.
+        required: true
+      tags:
+      - recurring-transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecurringTransaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecurringTransaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecurringTransaction'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringTransaction'
+          description: ''
+    patch:
+      operationId: recurring_transactions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Recurring Transaction.
+        required: true
+      tags:
+      - recurring-transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRecurringTransaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRecurringTransaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRecurringTransaction'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecurringTransaction'
+          description: ''
+    delete:
+      operationId: recurring_transactions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Recurring Transaction.
+        required: true
+      tags:
+      - recurring-transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/tags/:
+    get:
+      operationId: tags_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - tags
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionTagList'
+          description: ''
+    post:
+      operationId: tags_create
+      tags:
+      - tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionTag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionTag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TransactionTag'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionTag'
+          description: ''
+  /api/tags/{id}/:
+    get:
+      operationId: tags_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Tags.
+        required: true
+      tags:
+      - tags
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionTag'
+          description: ''
+    put:
+      operationId: tags_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Tags.
+        required: true
+      tags:
+      - tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionTag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TransactionTag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TransactionTag'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionTag'
+          description: ''
+    patch:
+      operationId: tags_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Tags.
+        required: true
+      tags:
+      - tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionTag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionTag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTransactionTag'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionTag'
+          description: ''
+    delete:
+      operationId: tags_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction Tags.
+        required: true
+      tags:
+      - tags
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/transactions/:
+    get:
+      operationId: transactions_list
+      parameters:
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      tags:
+      - transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionList'
+          description: ''
+    post:
+      operationId: transactions_create
+      tags:
+      - transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          description: ''
+  /api/transactions/{id}/:
+    get:
+      operationId: transactions_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction.
+        required: true
+      tags:
+      - transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          description: ''
+    put:
+      operationId: transactions_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction.
+        required: true
+      tags:
+      - transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          description: ''
+    patch:
+      operationId: transactions_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction.
+        required: true
+      tags:
+      - transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTransaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTransaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTransaction'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          description: ''
+    delete:
+      operationId: transactions_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Transaction.
+        required: true
+      tags:
+      - transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        group:
+          allOf:
+          - $ref: '#/components/schemas/AccountGroup'
+          readOnly: true
+        group_id:
+          type: integer
+          writeOnly: true
+          nullable: true
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        currency_id:
+          type: integer
+          writeOnly: true
+        exchange_currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        exchange_currency_id:
+          type: integer
+          writeOnly: true
+          nullable: true
+        is_asset:
+          type: boolean
+          title: Asset account
+          description: Asset accounts count towards your Net Worth, but not towards
+            your month.
+      required:
+      - currency
+      - currency_id
+      - exchange_currency
+      - exchange_currency_id
+      - group
+      - group_id
+      - id
+      - name
+    AccountGroup:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        owner:
+          type: integer
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+      required:
+      - id
+      - name
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        code:
+          type: string
+          title: Currency Code
+          maxLength: 255
+        name:
+          type: string
+          title: Currency Name
+          maxLength: 50
+        decimal_places:
+          type: integer
+          maximum: 30
+          minimum: 0
+        prefix:
+          type: string
+          maxLength: 10
+        suffix:
+          type: string
+          maxLength: 10
+        is_archived:
+          type: boolean
+          title: Archived
+        exchange_currency:
+          type: integer
+          nullable: true
+          description: Default currency for exchange calculations
+      required:
+      - code
+      - id
+      - name
+    DCAEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        strategy:
+          type: integer
+        date:
+          type: string
+          format: date
+        amount_paid:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        amount_received:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        notes:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        profit_loss:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        profit_loss_percentage:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        current_value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        entry_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+      required:
+      - amount_paid
+      - amount_received
+      - created_at
+      - current_value
+      - date
+      - entry_price
+      - id
+      - profit_loss
+      - profit_loss_percentage
+      - strategy
+      - updated_at
+    DCAStrategy:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        target_currency:
+          type: integer
+        payment_currency:
+          type: integer
+        notes:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DCAEntry'
+          readOnly: true
+        total_invested:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_received:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        average_entry_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_entries:
+          type: integer
+          readOnly: true
+        current_total_value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_profit_loss:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_profit_loss_percentage:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+      required:
+      - average_entry_price
+      - created_at
+      - current_total_value
+      - entries
+      - id
+      - name
+      - payment_currency
+      - target_currency
+      - total_entries
+      - total_invested
+      - total_profit_loss
+      - total_profit_loss_percentage
+      - total_received
+      - updated_at
+    ExchangeRate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        from_currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        from_currency_id:
+          type: integer
+          writeOnly: true
+        to_currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        to_currency_id:
+          type: integer
+          writeOnly: true
+        rate:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          title: Exchange Rate
+        date:
+          type: string
+          format: date-time
+          title: Date and Time
+        automatic:
+          type: boolean
+          title: Auto
+      required:
+      - date
+      - from_currency
+      - from_currency_id
+      - id
+      - rate
+      - to_currency
+      - to_currency_id
+    InstallmentPlan:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        account:
+          type: integer
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          title: Тип
+        description:
+          type: string
+          maxLength: 500
+        number_of_installments:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+        installment_start:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+          description: The installment number to start counting from
+        installment_total_number:
+          type: integer
+          readOnly: true
+        start_date:
+          type: string
+          format: date
+        reference_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+        recurrence:
+          $ref: '#/components/schemas/RecurrenceEnum'
+        installment_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        category:
+          oneOf:
+          - type: string
+          - type: integer
+          description: TransactionCategory ID or name. If the name doesn't exist,
+            a new one will be created
+        tags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionTag ID or name. If the name doesn't exist, a new
+            one will be created
+        entities:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionEntity ID or name. If the name doesn't exist, a
+            new one will be created
+        notes:
+          type: string
+      required:
+      - account
+      - description
+      - end_date
+      - id
+      - installment_amount
+      - installment_total_number
+      - start_date
+      - type
+    PaginatedAccountGroupList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountGroup'
+    PaginatedAccountList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    PaginatedCurrencyList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Currency'
+    PaginatedDCAEntryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DCAEntry'
+    PaginatedDCAStrategyList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DCAStrategy'
+    PaginatedExchangeRateList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExchangeRate'
+    PaginatedInstallmentPlanList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/InstallmentPlan'
+    PaginatedRecurringTransactionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecurringTransaction'
+    PaginatedTransactionCategoryList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionCategory'
+    PaginatedTransactionEntityList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionEntity'
+    PaginatedTransactionList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    PaginatedTransactionTagList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionTag'
+    PatchedAccount:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        group:
+          allOf:
+          - $ref: '#/components/schemas/AccountGroup'
+          readOnly: true
+        group_id:
+          type: integer
+          writeOnly: true
+          nullable: true
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        currency_id:
+          type: integer
+          writeOnly: true
+        exchange_currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        exchange_currency_id:
+          type: integer
+          writeOnly: true
+          nullable: true
+        is_asset:
+          type: boolean
+          title: Asset account
+          description: Asset accounts count towards your Net Worth, but not towards
+            your month.
+    PatchedAccountGroup:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        owner:
+          type: integer
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+    PatchedCurrency:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        code:
+          type: string
+          title: Currency Code
+          maxLength: 255
+        name:
+          type: string
+          title: Currency Name
+          maxLength: 50
+        decimal_places:
+          type: integer
+          maximum: 30
+          minimum: 0
+        prefix:
+          type: string
+          maxLength: 10
+        suffix:
+          type: string
+          maxLength: 10
+        is_archived:
+          type: boolean
+          title: Archived
+        exchange_currency:
+          type: integer
+          nullable: true
+          description: Default currency for exchange calculations
+    PatchedDCAEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        strategy:
+          type: integer
+        date:
+          type: string
+          format: date
+        amount_paid:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        amount_received:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        notes:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        profit_loss:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        profit_loss_percentage:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        current_value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        entry_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+    PatchedDCAStrategy:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        target_currency:
+          type: integer
+        payment_currency:
+          type: integer
+        notes:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/DCAEntry'
+          readOnly: true
+        total_invested:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_received:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        average_entry_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_entries:
+          type: integer
+          readOnly: true
+        current_total_value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_profit_loss:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+        total_profit_loss_percentage:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          readOnly: true
+    PatchedExchangeRate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        from_currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        from_currency_id:
+          type: integer
+          writeOnly: true
+        to_currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          readOnly: true
+        to_currency_id:
+          type: integer
+          writeOnly: true
+        rate:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+          title: Exchange Rate
+        date:
+          type: string
+          format: date-time
+          title: Date and Time
+        automatic:
+          type: boolean
+          title: Auto
+    PatchedInstallmentPlan:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        account:
+          type: integer
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          title: Тип
+        description:
+          type: string
+          maxLength: 500
+        number_of_installments:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+        installment_start:
+          type: integer
+          maximum: 2147483647
+          minimum: 1
+          description: The installment number to start counting from
+        installment_total_number:
+          type: integer
+          readOnly: true
+        start_date:
+          type: string
+          format: date
+        reference_date:
+          type: string
+          format: date
+          nullable: true
+        end_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+        recurrence:
+          $ref: '#/components/schemas/RecurrenceEnum'
+        installment_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        category:
+          oneOf:
+          - type: string
+          - type: integer
+          description: TransactionCategory ID or name. If the name doesn't exist,
+            a new one will be created
+        tags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionTag ID or name. If the name doesn't exist, a new
+            one will be created
+        entities:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionEntity ID or name. If the name doesn't exist, a
+            new one will be created
+        notes:
+          type: string
+    PatchedRecurringTransaction:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        is_paused:
+          type: boolean
+          title: Paused
+        account:
+          type: integer
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          title: Тип
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        description:
+          type: string
+          maxLength: 500
+        category:
+          oneOf:
+          - type: string
+          - type: integer
+          description: TransactionCategory ID or name. If the name doesn't exist,
+            a new one will be created
+        tags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionTag ID or name. If the name doesn't exist, a new
+            one will be created
+        entities:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionEntity ID or name. If the name doesn't exist, a
+            new one will be created
+        notes:
+          type: string
+        reference_date:
+          type: string
+          format: date
+          nullable: true
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        recurrence_type:
+          $ref: '#/components/schemas/RecurrenceTypeEnum'
+        recurrence_interval:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        last_generated_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+        last_generated_reference_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+    PatchedTransaction:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        category:
+          oneOf:
+          - type: string
+          - type: integer
+          description: TransactionCategory ID or name. If the name doesn't exist,
+            a new one will be created
+        tags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionTag ID or name. If the name doesn't exist, a new
+            one will be created
+        entities:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionEntity ID or name. If the name doesn't exist, a
+            new one will be created
+        exchanged_amount:
+          type: number
+          format: double
+          readOnly: true
+        account:
+          allOf:
+          - $ref: '#/components/schemas/Account'
+          readOnly: true
+        account_id:
+          type: integer
+          writeOnly: true
+        reference_date:
+          type: string
+          format: date
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          title: Тип
+        is_paid:
+          type: boolean
+          title: Paid
+        date:
+          type: string
+          format: date
+        mute:
+          type: boolean
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        description:
+          type: string
+          maxLength: 500
+        notes:
+          type: string
+        installment_id:
+          type: integer
+          readOnly: true
+          nullable: true
+        internal_note:
+          type: string
+        internal_id:
+          type: string
+          nullable: true
+        deleted:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        installment_plan:
+          type: integer
+          readOnly: true
+          nullable: true
+        recurring_transaction:
+          type: integer
+          readOnly: true
+          nullable: true
+    PatchedTransactionCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        mute:
+          type: boolean
+        active:
+          type: boolean
+          title: Действие
+          description: Deactivated categories won't be able to be selected when creating
+            new transactions
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+    PatchedTransactionEntity:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        active:
+          type: boolean
+          title: Действие
+          description: Deactivated entities won't be able to be selected when creating
+            new transactions
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+    PatchedTransactionTag:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        active:
+          type: boolean
+          title: Действие
+          description: Deactivated tags won't be able to be selected when creating
+            new transactions
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+    RecurrenceEnum:
+      enum:
+      - yearly
+      - monthly
+      - weekly
+      - daily
+      type: string
+      description: |-
+        * `yearly` - Yearly
+        * `monthly` - Monthly
+        * `weekly` - Weekly
+        * `daily` - Daily
+    RecurrenceTypeEnum:
+      enum:
+      - day
+      - week
+      - month
+      - year
+      type: string
+      description: |-
+        * `day` - day(s)
+        * `week` - week(s)
+        * `month` - month(s)
+        * `year` - year(s)
+    RecurringTransaction:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        is_paused:
+          type: boolean
+          title: Paused
+        account:
+          type: integer
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          title: Тип
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        description:
+          type: string
+          maxLength: 500
+        category:
+          oneOf:
+          - type: string
+          - type: integer
+          description: TransactionCategory ID or name. If the name doesn't exist,
+            a new one will be created
+        tags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionTag ID or name. If the name doesn't exist, a new
+            one will be created
+        entities:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionEntity ID or name. If the name doesn't exist, a
+            new one will be created
+        notes:
+          type: string
+        reference_date:
+          type: string
+          format: date
+          nullable: true
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+          nullable: true
+        recurrence_type:
+          $ref: '#/components/schemas/RecurrenceTypeEnum'
+        recurrence_interval:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        last_generated_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+        last_generated_reference_date:
+          type: string
+          format: date
+          readOnly: true
+          nullable: true
+      required:
+      - account
+      - amount
+      - description
+      - id
+      - last_generated_date
+      - last_generated_reference_date
+      - recurrence_interval
+      - recurrence_type
+      - start_date
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        category:
+          oneOf:
+          - type: string
+          - type: integer
+          description: TransactionCategory ID or name. If the name doesn't exist,
+            a new one will be created
+        tags:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionTag ID or name. If the name doesn't exist, a new
+            one will be created
+        entities:
+          type: array
+          items:
+            oneOf:
+            - type: string
+            - type: integer
+          description: TransactionEntity ID or name. If the name doesn't exist, a
+            new one will be created
+        exchanged_amount:
+          type: number
+          format: double
+          readOnly: true
+        account:
+          allOf:
+          - $ref: '#/components/schemas/Account'
+          readOnly: true
+        account_id:
+          type: integer
+          writeOnly: true
+        reference_date:
+          type: string
+          format: date
+        type:
+          allOf:
+          - $ref: '#/components/schemas/TypeEnum'
+          title: Тип
+        is_paid:
+          type: boolean
+          title: Paid
+        date:
+          type: string
+          format: date
+        mute:
+          type: boolean
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,30})?$
+        description:
+          type: string
+          maxLength: 500
+        notes:
+          type: string
+        installment_id:
+          type: integer
+          readOnly: true
+          nullable: true
+        internal_note:
+          type: string
+        internal_id:
+          type: string
+          nullable: true
+        deleted:
+          type: boolean
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        deleted_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        installment_plan:
+          type: integer
+          readOnly: true
+          nullable: true
+        recurring_transaction:
+          type: integer
+          readOnly: true
+          nullable: true
+      required:
+      - account
+      - account_id
+      - amount
+      - created_at
+      - date
+      - deleted
+      - deleted_at
+      - exchanged_amount
+      - id
+      - installment_id
+      - installment_plan
+      - owner
+      - recurring_transaction
+      - updated_at
+    TransactionCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        mute:
+          type: boolean
+        active:
+          type: boolean
+          title: Действие
+          description: Deactivated categories won't be able to be selected when creating
+            new transactions
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+      required:
+      - id
+      - name
+      - owner
+    TransactionEntity:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        active:
+          type: boolean
+          title: Действие
+          description: Deactivated entities won't be able to be selected when creating
+            new transactions
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+      required:
+      - id
+      - name
+      - owner
+    TransactionTag:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/VisibilityEnum'
+        name:
+          type: string
+          title: Название
+          maxLength: 255
+        active:
+          type: boolean
+          title: Действие
+          description: Deactivated tags won't be able to be selected when creating
+            new transactions
+        owner:
+          type: integer
+          readOnly: true
+          nullable: true
+        shared_with:
+          type: array
+          items:
+            type: integer
+            title: Shared with users
+          title: Shared with users
+      required:
+      - id
+      - name
+      - owner
+    TypeEnum:
+      enum:
+      - IN
+      - EX
+      type: string
+      description: |-
+        * `IN` - Income
+        * `EX` - Expense
+    VisibilityEnum:
+      enum:
+      - private
+      - public
+      type: string
+      description: |-
+        * `private` - Private
+        * `public` - Public
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
