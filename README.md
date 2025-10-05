@@ -40,6 +40,7 @@ A production-ready Model Context Protocol (MCP) server that provides a universal
    ```bash
    cp .env.example .env
    # Edit .env with your credentials
+   # Don't forget change you WYGIWYH url in server.py
    ```
 
 3. **Deploy with Docker**
