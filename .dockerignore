@@ -1,0 +1,53 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Replit
+.replit
+replit.nix
+.config/
+.cache/
+.upm/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+/tmp/
+
+# Test files
+test_*.py
+*_test.py
+
+# Documentation
+*.md
+README.md
+LICENSE
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Deployment
+docker-compose.override.yml

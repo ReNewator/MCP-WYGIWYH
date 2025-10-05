@@ -1,0 +1,31 @@
+# Docker Compose configuration for WYGIWYH MCP Server
+# Copyright (c) 2025 ReNewator.com
+
+version: '3.8'
+
+services:
+  mcp-server:
+    build: .
+    image: wygiwyh-mcp-server:latest
+    container_name: wygiwyh-mcp-server
+    ports:
+      - "5000:5000"
+    environment:
+      - API_USERNAME=${API_USERNAME}
+      - API_PASSWORD=${API_PASSWORD}
+      - MCP_TOKEN=${MCP_TOKEN}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge
