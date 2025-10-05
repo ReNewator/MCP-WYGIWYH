@@ -18,7 +18,7 @@ from mcp.types import Tool, TextContent
 from pydantic import AnyUrl
 import asyncio
 
-API_BASE_URL = "https://fin.vigitix.com"
+API_BASE_URL = "https://your-WYGIWYH.com"
 
 def get_auth_header() -> str:
     """Get the current Basic auth header from environment variables."""
