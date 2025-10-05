@@ -1,7 +1,9 @@
-# WYGIWYH API MCP Server
+# [WYGIWYH](https://github.com/eitchtee/WYGIWYH) API MCP Server
 
 
 A production-ready Model Context Protocol (MCP) server that provides a universal interface to the WYGIWYH expense tracking API. The server dynamically generates 75 MCP tools from an OpenAPI specification, enabling AI agents and automation platforms like n8n to interact with the expense tracking system through standardized tool calls.
+
+Original repo of [WYGIWYH](https://github.com/eitchtee/WYGIWYH) 
 
 ## ✨ Features
 
